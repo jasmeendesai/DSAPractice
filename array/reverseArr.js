@@ -8,17 +8,30 @@
 
 const arr = [0, 1, 8, 9, 3, 2, 7, 4]
 
+// const reverseArr = (arr)=>{
+//     let n = arr.length
+//     let i=0;
+//     let j=n-1;
+
+//     while(i<j){
+//         let temp=arr[i]
+//         arr[i]=arr[j]
+//         arr[j]=temp
+//         i++
+//         j--
+//     }
+//     return arr
+// }
 const reverseArr = (arr)=>{
-    let n = arr.length
     let i=0;
-    let j=n-1
+    let j= arr.length-1;
 
     while(i<j){
-        let temp=arr[i]
-        arr[i]=arr[j]
-        arr[j]=temp
-        i++
-        j--
+        let temp = arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+        i++;
+        j--;
     }
     return arr
 }
