@@ -175,4 +175,252 @@ const binaryTri = (n) =>{
 binaryTri(n)
 
 
-// 
+// https://takeuforward.org/pattern/pattern-12-number-crown-pattern/
+
+const crownPattern = (n) => {
+    for (let i = 1; i <=n; i++) {
+        let row = ""
+        
+        for(let j=1; j<=i; j++){
+            row +=`${j}`
+        }
+
+        for(let j=1; j<= 2*(n-i); j++){
+            row +=" "
+        }
+
+        for(let j=i; j>=1; j--){
+            row +=`${j}`
+        }
+
+        console.log(row)
+    }
+}
+
+crownPattern(n)
+
+// https://takeuforward.org/pattern/pattern-13-increasing-number-triangle-pattern/
+
+const numberTri = (n) => {
+    let count = 1;
+    for (let i = 0; i < n; i++) {    
+        let row = "";   
+        for (let j = 1; j <= i; j++) {
+            row +=`${count} `;
+            count++
+        }
+        console.log(row.trim())
+    }
+}
+
+numberTri(6)
+
+
+// https://takeuforward.org/pattern/pattern-14-increasing-letter-triangle-pattern/
+
+const letterTri = (n) => {
+   
+    for (let i = 0; i < n; i++) {
+        let row = ""
+        let letter = "A";
+        for (let j = 0; j <= i; j++) {
+            row +=`${letter} `      
+            letter = String.fromCharCode(letter.charCodeAt(0) + 1)     
+        }
+        console.log(row)
+    }
+}
+
+letterTri(n)
+
+// https://takeuforward.org/pattern/pattern-15-reverse-letter-triangle-pattern/
+
+const reverseLetterTri = (n) => {
+    for (let i = n; i > 0 ; i--) {
+        let row = ""
+        let letter = "A"
+
+        for(let j=0; j<i ; j++){
+            row += `${letter} `
+            letter = String.fromCharCode(letter.charCodeAt(0) + 1)
+        }
+
+        console.log(row)
+    }
+}
+
+reverseLetterTri(n)
+
+// https://takeuforward.org/pattern/pattern-16-alpha-ramp-pattern/
+
+const alphaRampPattern = (n) =>{
+    let letter = "A";
+    for (let i = 0; i < n; i++) {
+        let row = ""       
+        for (let j = 0; j <= i; j++) {
+            row +=`${letter} `     
+        }
+        letter = String.fromCharCode(letter.charCodeAt(0) + 1) 
+        console.log(row)
+    }
+}
+
+alphaRampPattern(n)
+
+// https://takeuforward.org/pattern/pattern-17-alpha-hill-pattern/
+
+const alphaHillPattern = (n) =>{
+    for(let i=0; i<n; i++){
+        let row = ""
+        
+        for(let j=0; j<(n-i-1); j++){
+            row +=" "
+        }
+
+        for(let j=0; j<=i; j++){
+            row += String.fromCharCode(65 + j)
+        }
+
+        for(let j=i-1; j>=0; j--){
+            row += String.fromCharCode(65 + j)
+        }
+
+        console.log(row)
+    }
+}
+
+alphaHillPattern(n)
+
+// https://takeuforward.org/pattern/pattern-18-alpha-triangle-pattern/
+
+const alphaTriPattern = (n) => {
+    for(let i=0; i<n; i++){
+        let row = ""
+        
+        for(let j=n-1; j>=(n-i-1); j--){
+            row += `${String.fromCharCode(65 + j)} `
+        }
+
+        console.log(row.trim())
+    }
+}
+
+alphaTriPattern(n)
+
+// https://takeuforward.org/pattern/pattern-19-symmetric-void-pattern/
+
+const symVoidPattern = (n) =>{
+    for(let i=0; i<n; i++){
+        let row = ""
+
+        for(let j=(n-i); j>0; j--){
+            row +="*"
+        }
+
+        for(let j=0; j<2*i; j++ ){
+            row +=" "
+        }
+
+        for(let j=(n-i); j>0; j--){
+            row +="*"
+        }
+        console.log(row.trim())
+    }
+
+    for(let i=0; i<n; i++){
+        let row = ""
+
+        for(let j=0; j<=i; j++){
+            row +="*"
+        }
+
+        for(let j=0; j<2*(n-i-1); j++ ){
+            row +=" "
+        }
+
+        for(let j=0; j<=i; j++){
+            row +="*"
+        }
+        console.log(row.trim())
+    }
+}
+
+symVoidPattern(n)
+
+
+// https://takeuforward.org/pattern/pattern-20-symmetric-butterfly-pattern/
+
+const symmButterfly = (n) => {
+    for(let i=0; i<n; i++){
+        let row = ""
+
+        for(let j=0; j<=i; j++){
+            row +="*"
+        }
+
+        for(let j=0; j<2*(n-i-1); j++ ){
+            row +=" "
+        }
+
+        for(let j=0; j<=i; j++){
+            row +="*"
+        }
+        console.log(row.trim())
+    }
+    for(let i=1; i<n; i++){
+        let row = ""
+
+        for(let j=(n-i); j>0; j--){
+            row +="*"
+        }
+
+        for(let j=0; j<2*i; j++ ){
+            row +=" "
+        }
+
+        for(let j=(n-i); j>0; j--){
+            row +="*"
+        }
+        console.log(row.trim())
+    }
+}
+
+symmButterfly(n)
+
+// https://takeuforward.org/pattern/pattern-21-hollow-rectangle-pattern/
+
+const hollowRectangle = (n) =>{
+    for(let i=0; i<n; i++){
+        let row = ""
+        for(let j=0; j<n; j++){
+            if(i===0 || j===0 || i===(n-1) || j===(n-1)){
+                row +="*"
+            }
+            else{
+                row +=" "
+            }
+        }
+        console.log(row)
+    }
+}
+
+hollowRectangle(n)
+
+// https://takeuforward.org/pattern/pattern-22-the-number-pattern/
+
+const rectNumberPattern = (n) =>{
+    for(let i=0; i<(2*n-1); i++){
+        let row = ""
+        for(let j=0; j<(2*n-1); j++){
+            let top = i;
+            let bottom =j;
+            let right = (2*n-2) - j;
+            let left = (2*n-2) - i;
+
+            row += `${n - Math.min((Math.min(top, bottom)), (Math.min(left, right)))}`
+        }
+        console.log(row)
+    }
+}
+
+rectNumberPattern(n)
