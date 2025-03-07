@@ -15,7 +15,8 @@ Input: arr[] = {0, 0, 0, 0, 0, 0, 0}
 Output: 0
  */
 
-// Count 1’s in a sorted binary array using Binary search recursively: 
+// Count 1’s in a sorted binary array using Binary search recursively: TC - O(logn) SC-O(logn)
+
 // We can use Binary Search to find count in O(Logn) time. The idea is to look for the last occurrence of 1 using Binary Search. Once we find the index’s last occurrence, we return index + 1 as count.
 
 // Follow the steps below to implement the above idea:
@@ -27,7 +28,7 @@ Output: 0
 // Otherwise, move the low to left recursively and return the result received from it.
 
 
-let arr = [ 1, 1, 1, 0, 0, 0, 0 ];
+let arr = [ 1, 0, 0, 0, 0, 0, 0 ];
 let n = arr.length;
 
 const countOnes = (arr, low, high) =>{
@@ -53,7 +54,7 @@ console.log("Count of 1's in given array is " +
 
 // ----------------------------------------
 
-// Count 1’s in a sorted binary array using binary search iteratively:
+// Count 1’s in a sorted binary array using binary search iteratively: TC - O(logn) SC-O(1)
 
 // Do while low <= high
 // Calculate the middle index say mid
@@ -63,18 +64,20 @@ console.log("Count of 1's in given array is " +
 // Otherwise move to low to right (i.e, low = mid + 1)
 
 
-// const countOnes1 = (arr) =>{
-//     let low = 0;
-//     let high = arr.length -1;
+const countOnes1 = (arr) =>{
+    let low = 0;
+    let high = arr.length -1;
 
-//     while(low<high){
-//         let mid = Math.floor(low + ((high-low)/2))
-//         if(arr[mid]!=1) high = mid -1;
-//         else{
-//             if((mid==high || arr[mid+1]==0) && arr[mid]==1) return mid+1
-//             else low = mid+1;
-//         }
-//     }
-// }
+    while(low<=high){
+        let mid = Math.floor(low + ((high-low)/2))
+        if(arr[mid]!=1) high = mid -1;
+        else{
+            // if((mid==arr.length-1 || arr[mid+1]==0) && arr[mid]==1) return mid+1
+            if(mid==arr.length-1 || arr[mid+1]==0) return mid+1
+            else low = mid+1;
+        }
+    }
+    return 0
+}
 
-// console.log(countOnes1(arr))
+console.log(countOnes1(arr))
