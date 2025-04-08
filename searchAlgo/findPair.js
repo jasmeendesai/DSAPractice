@@ -38,13 +38,25 @@ const findPair1 = (arr, n) => {
     let map = new Map()
 
     for(let i=0; i<arr.length; i++){
-        let sum = n+arr[i]
+        let target1 = arr[i] +n
+        let target2 = arr[i] -n
 
-        if(map.has(sum)) return `Pair Found: (${arr[j]-n}, ${arr[j]})`
-        map.set(arr[i], i)
+        // if(map.has(sum)) return `Pair Found: (${arr[j]-n}, ${arr[j]})`
+        if(map.has(target1)){ 
+            return `Pair Found: (${arr[i]}, ${target1})`
+        }
+
+        if(map.has(target2)){ 
+            return `Pair Found: (${arr[i]}, ${target2})`
+        }
+        // console.log("map",map)
+        // map.set(arr[i], i)
+        map.set(arr[i], true)
+        // console.log(map.get(arr[i]))
     }
+    return `No Such Pair`
 }
 
-console.log(arr, n)
+console.log(findPair1(arr, n))
 
 
