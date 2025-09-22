@@ -100,6 +100,8 @@ Constraints:
 -231 <= x <= 231 - 1
  */
 
+// TC --> O(logn)
+
 const check_palindrome = (n) => {
     let rev = 0
     if(n<0) return false
@@ -136,3 +138,122 @@ An Amrstrong number is a number that is equal to the sum of its own digits each 
  Output: True              
  Explanation: 3^3+5^3+1^3 = 27 + 343 + 1 = 371
  */
+
+//  TC -- O(logn)
+const check_amstrongNum = (n)=>{
+    let sum = 0
+    let temp = n
+
+    let k = String(n).length
+
+    while(n>0){
+        ld = n % 10
+        sum = sum + (ld ** k)
+        n = Math.floor(n/10)
+    }
+
+    return temp === sum ? true : false
+}
+
+console.log("Amstrong Num", check_amstrongNum(153))
+console.log("Amstrong Num", check_amstrongNum(15))
+
+
+/**
+ * https://takeuforward.org/data-structure/print-all-divisors-of-a-given-number/
+ * Problem Statement: Given an integer N, return all divisors of N.
+A divisor of an integer N is a positive integer that divides N without leaving a remainder. In other words, if N is divisible by another integer without any remainder, then that integer is considered a divisor of N.
+
+ Example 1:
+ Input:N = 36              
+ Output:[1, 2, 3, 4, 6, 9, 12, 18, 36]
+ Explanation: The divisors of 36 are 1, 2, 3, 4, 6, 9, 12, 18, 36.
+         
+ Example 2:
+ Input:N =12 
+ Output: [1, 2, 3, 4, 6, 12]
+ Explanation: The divisors of 12 are 1, 2, 3, 4, 6, 12.      
+ */
+
+//  TC -- O(n)
+
+ const print_divisors = (n) => {
+    let res = []
+
+    for(let i =1; i<= n+1; i++){
+        if(n%i ===0) res.push(i)
+    }
+    return res
+ }
+
+ console.log(print_divisors(36))
+
+ const print_divisors1 = (n) =>{
+    let res = []
+
+    for(let i=1; i<=Math.sqrt(n); i++){
+        if(n%i === 0) res.push(i)
+        if(i !== (n/i)) res.push(Math.floor(n/i))
+    }
+
+    return res.sort((a,b) => a-b)
+ }
+
+ console.log(print_divisors1(36))
+
+ const print_divisors2 = (n)=>{
+    let res = []
+    
+    for(let i=1; i*i <= n ; i++){
+        if(n%i === 0) res.push(i)
+        if(i!== (n/i)) res.push(Math.floor(n/i))
+    }
+
+    return res.sort((a,b)=> a - b)
+ }
+
+/**
+ * https://takeuforward.org/data-structure/check-if-a-number-is-prime-or-not/
+ * Problem Statement: Given an integer N, check whether it is prime or not. A prime number is a number that is only divisible by 1 and itself and the total number of divisors is 2.
+ * Example 1:
+   Input:N = 2
+   Output:True      
+   Explanation: 2 is a prime number because it has two divisors: 1 and 2 (the number itself).   
+
+   Example 2:   
+   Input:N =1         
+   Output: False      
+   Explanation: 10 is not prime, it is a composite number because it has 4 divisors: 1, 2, 5 and 10.  
+ */
+
+// TC -- O(n)
+
+const check_isPrime = (n) =>{
+    let count = 0
+
+    for(let i =1 ; i<=n; i++){
+        if(n%i ==0) count++
+    }
+
+    if(count == 2) return true
+    else return false
+}
+
+console.log("Prime", check_isPrime(11))
+console.log("Prime", check_isPrime(4))
+
+// TC -- O(sqrt(n))
+const check_isPrime1 = (n) =>{
+    let count = 0
+
+    for(let i =1; i*i <=n; i++){
+        if(n%i == 0) count++
+        if(n%i !== i) count++
+    }
+
+    if(count == 2) return true
+    else return false
+}
+
+console.log("Prime", check_isPrime(11))
+console.log("Prime", check_isPrime(4))
