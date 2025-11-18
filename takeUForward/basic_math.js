@@ -257,3 +257,65 @@ const check_isPrime1 = (n) =>{
 
 console.log("Prime", check_isPrime(11))
 console.log("Prime", check_isPrime(4))
+
+
+/**
+ * https://takeuforward.org/data-structure/find-gcd-of-two-numbers/
+Problem Statement: Given two integers N1 and N2, find their greatest common divisor.
+The Greatest Common Divisor of any two integers is the largest number that divides both integers.
+
+Example 1:
+Input:N1 = 9, N2 = 12
+Output:3
+Explanation:Factors of 9: 1, 3 and 9
+Factors of 12: 1, 2, 3, 4, 6, 12
+Common Factors: 1, 3 out of which 3 is the greatest hence it is the GCD.
+
+Example 2:
+Input:N1 = 20, N2 = 15
+Output: 5
+Explanation:Factors of 20: 1, 2, 4, 5
+Factors of 15: 1, 3, 5
+Common Factors: 1, 5 out of which 5 is the greatest hence it is the GCD.
+ */
+
+// TC --> O(min(n1, n2))
+
+const gcd_nums = (n1, n2) => {
+    let gcd = 1
+    for(let i=1; i<=Math.min(n1, n2); i++){
+        if(n1%i == 0 && n2%i == 0) gcd = i
+    }
+    return gcd
+}
+
+console.log("gcd", gcd_nums(11, 13))
+console.log("gcd", gcd_nums(40, 20))
+
+// TC --> O(min(n1, n2)) --> but fewer number of iterations
+
+const gcd_nums1 = (n1, n2) =>{
+
+    for(let i=Math.min(n1, n2); i>0; i--){
+        if(n1%i == 0 && n2%i == 0) return i
+    }
+
+    return 1
+}
+
+console.log("gcd", gcd_nums1(11, 13))
+console.log("gcd", gcd_nums1(40, 20))
+
+// TC --> O(log(a)(min(n1, n2))) ---> lesser number of iterations
+
+const gcd_nums2 = (n1, n2) =>{
+    while(n1>0 && n2>0){
+        if(n1>n2) n1 = n1%n2
+        else n2 = n2%n1
+    }
+    if(n1 == 0) return n2
+    else return n1
+}
+
+console.log("gcd", gcd_nums2(11, 13))
+console.log("gcd", gcd_nums2(20, 40))
